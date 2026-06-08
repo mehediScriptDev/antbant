@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Shield, Upload, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Shield, Upload, AlertCircle, CheckCircle2, FileWarning, EyeOff } from "lucide-react";
 
 export default function ReportIncident() {
   const [step, setStep] = useState(1);
@@ -13,46 +12,39 @@ export default function ReportIncident() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
+    <div className="min-h-screen bg-slate-100 py-12 border-t-4 border-red-600">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Header */}
         <div className="text-center mb-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center justify-center p-3 bg-primary-100 dark:bg-primary-900/30 rounded-full mb-4"
-          >
-            <Shield className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-          </motion.div>
-          <h1 className="text-3xl font-bold text-foreground mb-4">
-            Report an Incident Anonymously
+          <div className="inline-flex items-center justify-center p-4 bg-red-100 rounded-sm mb-6 border border-red-200">
+            <FileWarning className="w-10 h-10 text-red-600" />
+          </div>
+          <h1 className="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+            Official Complaint Form
           </h1>
-          <p className="text-slate-500 dark:text-slate-400">
+          <p className="text-lg text-slate-600 font-medium">
+            <EyeOff className="w-5 h-5 inline-block mr-2 text-red-600" />
             Your identity is fully protected. Please provide as much detail as
-            possible to help us take appropriate action.
+            possible to help authorities take immediate action.
           </p>
         </div>
 
         {/* Form Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden"
-        >
+        <div className="bg-white rounded-sm shadow-xl border-t-4 border-slate-900 overflow-hidden">
           {step === 1 && (
-            <form onSubmit={() => setStep(2)} className="p-8">
-              <h2 className="text-xl font-semibold mb-6 border-b border-slate-100 dark:border-slate-700 pb-4">
+            <form onSubmit={() => setStep(2)} className="p-8 md:p-12">
+              <h2 className="text-2xl font-black mb-8 border-b-2 border-slate-200 pb-4 uppercase text-slate-800 tracking-tight">
                 Step 1: Incident Details
               </h2>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                    University Name
+                  <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
+                    University Name <span className="text-red-600">*</span>
                   </label>
                   <select
                     required
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                    className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                   >
                     <option value="">Select University</option>
                     <option value="du">Dhaka University</option>
@@ -65,57 +57,57 @@ export default function ReportIncident() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                      Date of Incident
+                    <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
+                      Date of Incident <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="date"
                       required
-                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
                       Approximate Time
                     </label>
                     <input
                       type="time"
-                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                    Location (Specific Building/Area)
+                  <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
+                    Location (Specific Building/Area) <span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Science Faculty, Room 302 or Cafeteria"
                     required
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                    className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                    Description of the Incident
+                  <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
+                    Description of the Incident <span className="text-red-600">*</span>
                   </label>
                   <textarea
                     rows={5}
-                    placeholder="Please describe what happened in detail..."
+                    placeholder="Please describe exactly what happened. State the facts clearly..."
                     required
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all resize-none"
+                    className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800 resize-none"
                   ></textarea>
                 </div>
 
-                <div className="pt-4 flex justify-end">
+                <div className="pt-6 flex justify-end border-t-2 border-slate-100 mt-8">
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white rounded-xl font-semibold transition-colors shadow-md shadow-primary-500/20"
+                    className="px-10 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-sm font-black uppercase tracking-widest transition-colors"
                   >
-                    Next Step
+                    Proceed to Step 2
                   </button>
                 </div>
               </div>
@@ -123,81 +115,80 @@ export default function ReportIncident() {
           )}
 
           {step === 2 && (
-            <form onSubmit={handleSubmit} className="p-8">
-              <h2 className="text-xl font-semibold mb-6 border-b border-slate-100 dark:border-slate-700 pb-4">
-                Step 2: Evidence & Optional Info
+            <form onSubmit={handleSubmit} className="p-8 md:p-12">
+              <h2 className="text-2xl font-black mb-8 border-b-2 border-slate-200 pb-4 uppercase text-slate-800 tracking-tight">
+                Step 2: Evidence & Identity
               </h2>
 
-              <div className="space-y-6">
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-                  <p className="text-sm text-blue-800 dark:text-blue-300">
-                    Providing evidence drastically increases the chances of a
-                    successful investigation. You can upload audio, video, or
-                    images.
+              <div className="space-y-8">
+                <div className="bg-red-50 border-l-4 border-red-600 p-4 flex items-start gap-3">
+                  <AlertCircle className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-900 font-medium">
+                    <strong className="block mb-1 text-red-700">CRITICAL: Provide Evidence if Possible</strong>
+                    Uploading audio, video, or images drastically increases the chances of a successful investigation and strict punitive action.
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
                     Upload Evidence (Optional)
                   </label>
-                  <div className="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-8 text-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
-                    <Upload className="w-10 h-10 text-slate-400 mx-auto mb-4" />
-                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <div className="border-2 border-dashed border-slate-300 bg-slate-50 rounded-sm p-10 text-center hover:bg-slate-100 transition-colors cursor-pointer">
+                    <Upload className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+                    <p className="text-base font-bold text-slate-600 mb-2">
                       Drag and drop files here, or click to browse
                     </p>
-                    <p className="text-xs text-slate-400 mt-2">
+                    <p className="text-xs text-slate-500 uppercase tracking-wider font-bold">
                       Max file size: 50MB
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-slate-100 dark:border-slate-700">
-                  <h3 className="font-medium text-slate-800 dark:text-slate-200 mb-4">
-                    Contact Information (Strictly Confidential - Optional)
+                <div className="pt-8 border-t-2 border-slate-200">
+                  <h3 className="text-lg font-black text-slate-900 mb-2 uppercase tracking-wide">
+                    Contact Information (Optional)
                   </h3>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Leave this blank if you wish to remain 100% anonymous.
+                  <p className="text-sm font-bold text-slate-500 mb-6 uppercase tracking-wider flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-primary-600" /> Strictly Confidential. Leave blank to remain anonymous.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
                         Phone Number
                       </label>
                       <input
                         type="tel"
                         placeholder="+880 1XX XXX XXXX"
-                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                        className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      <label className="block text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
                         Email Address
                       </label>
                       <input
                         type="email"
                         placeholder="you@example.com"
-                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                        className="w-full bg-slate-50 border-2 border-slate-200 rounded-sm px-4 py-3 outline-none focus:border-red-600 focus:ring-0 transition-colors font-medium text-slate-800"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 flex justify-between items-center">
+                <div className="pt-8 border-t-2 border-slate-200 flex justify-between items-center">
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="px-6 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium transition-colors"
+                    className="px-8 py-4 text-slate-600 hover:text-slate-900 font-bold uppercase tracking-wider transition-colors"
                   >
-                    Back
+                    Go Back
                   </button>
                   <button
                     type="submit"
-                    className="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white rounded-xl font-semibold transition-colors shadow-md shadow-primary-500/20"
+                    className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white rounded-sm font-black uppercase tracking-widest transition-colors shadow-xl"
                   >
-                    Submit Report Securely
+                    Submit Securely
                   </button>
                 </div>
               </div>
@@ -205,43 +196,40 @@ export default function ReportIncident() {
           )}
 
           {step === 3 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="p-12 text-center"
-            >
-              <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+            <div className="p-12 text-center bg-white">
+              <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 border-[6px] border-green-50">
+                <CheckCircle2 className="w-12 h-12 text-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                Report Submitted Successfully
+              <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+                Complaint Registered Successfully
               </h2>
-              <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md mx-auto">
-                Your report has been securely transmitted to the relevant
-                authorities. Please save your unique tracking ID below to check
-                the status.
+              <p className="text-lg text-slate-600 mb-10 max-w-lg mx-auto font-medium">
+                Your report has been securely transmitted to the UGC Anti-Ragging Cell. Law enforcement will be engaged if required.
               </p>
 
-              <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-6 mb-8 inline-block min-w-[300px]">
-                <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-2">
-                  Tracking ID
+              <div className="bg-slate-900 rounded-sm p-8 mb-10 inline-block min-w-[350px] border-b-4 border-red-600 shadow-2xl">
+                <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-3">
+                  Your Secure Tracking ID
                 </p>
-                <p className="text-3xl font-mono font-bold tracking-widest text-primary-600 dark:text-primary-400">
+                <p className="text-4xl font-mono font-black tracking-widest text-white">
                   RAG-8472B
+                </p>
+                <p className="text-xs text-red-400 font-bold mt-4 tracking-wide uppercase">
+                  Please save this ID. It will not be shown again.
                 </p>
               </div>
 
               <div>
                 <button
-                  onClick={() => (window.location.href = "/dashboard")}
-                  className="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white rounded-xl font-semibold transition-colors"
+                  onClick={() => (window.location.href = "/track")}
+                  className="px-10 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-sm font-black uppercase tracking-widest transition-colors"
                 >
-                  Track Status
+                  Go To Tracking Portal
                 </button>
               </div>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

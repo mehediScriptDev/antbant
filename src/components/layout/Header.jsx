@@ -31,8 +31,11 @@ export default function Header() {
             <Link href="/" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
               Home
             </Link>
-            <Link href="#laws" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
+            <Link href="/laws" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
               Laws & Acts
+            </Link>
+            <Link href="/cases" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
+              Action Report
             </Link>
             <Link href="/report" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
               Submit Complaint
