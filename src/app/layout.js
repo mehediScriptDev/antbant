@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "National Anti-Ragging Portal BD",
+  title: "Ragging & Harassment Reporting Portal for Students in Bangladesh",
   description: "Official portal for reporting and preventing ragging in universities across Bangladesh.",
 };
 

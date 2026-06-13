@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import {
   AlertTriangle,
@@ -11,6 +12,8 @@ import {
   Search,
   FileWarning,
   EyeOff,
+  ChevronDown,
+  HelpCircle,
 } from "lucide-react";
 
 export default function Home() {
@@ -45,7 +48,7 @@ export default function Home() {
             alt="Student in distress"
             className="w-full h-full object-cover opacity-20 grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -62,10 +65,10 @@ export default function Home() {
             </h1>
 
             <p className="text-xl text-slate-300 mb-10 leading-relaxed font-medium">
-              This is the official, secure, and 100% anonymous portal for
-              students in Bangladesh to report incidents of ragging, harassment,
-              and bullying directly to the University Grants Commission and Law
-              Enforcement.
+              Whether you are a madrasha student, high-school girl facing
+              eve-teasing, or a university fresher being bullied — this is your
+              safe, anonymous portal to report ragging, harassment, and
+              intimidation directly to the authorities.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -206,6 +209,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ SECTION */}
+      <FAQSection />
+
       {/* BOTTOM CTA */}
       <section className="py-20 bg-red-700 text-white text-center">
         <div className="container mx-auto px-4">
@@ -214,8 +220,9 @@ export default function Home() {
             Don't Suffer in Silence.
           </h2>
           <p className="text-xl mb-10 text-red-100 max-w-2xl mx-auto font-medium">
-            Your identity is safe. The law is on your side. Step forward to stop
-            ragging in your university today.
+            Whether it's ragging, eve-teasing, or any form of harassment — your
+            identity is safe and the law is on your side. Every student deserves
+            a fear-free education.
           </p>
           <Link
             href="/report"
@@ -226,5 +233,128 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+/* ── FAQ Accordion Component ── */
+const faqData = [
+  {
+    question: "What is ragging and how can I identify it?",
+    answer:
+      "Ragging includes any act — verbal, physical, or psychological — that humiliates, intimidates, or harms a student. This covers forcing freshers to perform tasks, verbal abuse, physical assault, cyberbullying, and any conduct that creates fear or shame. If you feel unsafe or humiliated, it is ragging.",
+  },
+  {
+    question: "I am a girl facing eve-teasing on my way to school/college. Can I report here?",
+    answer:
+      "Absolutely. Eve-teasing, catcalling, stalking, and any form of sexual harassment — whether on campus, on the road, or online — can be reported through this portal. Your complaint will be forwarded to the relevant law enforcement and institutional authorities immediately.",
+  },
+  {
+    question: "Can madrasha students use this portal?",
+    answer:
+      "Yes. This portal is for every student in Bangladesh — madrasha, high school, college, and university. No matter where you study, you have the right to a safe learning environment and can report any form of ragging or harassment here.",
+  },
+  {
+    question: "Will my identity be kept confidential?",
+    answer:
+      "100% yes. Your identity is fully encrypted and never shared with the accused or any third party. You are protected under the Whistleblower Protection Act. Only authorized investigating officers can access complaint details.",
+  },
+  {
+    question: "What happens after I submit a complaint?",
+    answer:
+      "You receive a unique Tracking ID immediately. Your complaint is forwarded to the Anti-Ragging Cell of the relevant institution and the UGC. An investigation is initiated within 72 hours. You can track the status anytime using your Tracking ID.",
+  },
+  {
+    question: "What kind of punishment do perpetrators face?",
+    answer:
+      "Depending on severity: suspension or expulsion from the institution, FIR with local police, criminal prosecution under the Penal Code of Bangladesh, and a permanent mark on academic records. Repeat offenders face enhanced penalties.",
+  },
+  {
+    question: "I am being harassed by a teacher or staff member. Can I report that too?",
+    answer:
+      "Yes. Harassment by anyone — students, teachers, staff, or outsiders — can be reported. The portal handles complaints against all individuals associated with educational institutions.",
+  },
+  {
+    question: "Can I report an incident that happened to someone else?",
+    answer:
+      "Yes. If you have witnessed ragging, harassment, or eve-teasing happening to a fellow student, you can file a report as a witness. Bystander reports are equally important and are investigated with the same urgency.",
+  },
+  {
+    question: "Is there a helpline I can call instead of filing online?",
+    answer:
+      "Yes. You can call the National Emergency number 999 or the Anti-Harassment Helpline 109 (available 24/7). Both lines are free, confidential, and staffed by trained counselors who can guide you.",
+  },
+  {
+    question: "I'm scared of retaliation. What protection do I have?",
+    answer:
+      "The law strictly prohibits any retaliation against complainants. If you face threats or intimidation after filing a report, immediately update your complaint — additional protective measures including campus security orders and legal injunctions will be enforced.",
+  },
+];
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section id="faq" className="py-20 bg-white border-t border-slate-200">
+      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-600 text-white font-bold text-xs tracking-widest uppercase mb-6 rounded-sm">
+            <HelpCircle className="w-4 h-4" />
+            <span>Have Questions?</span>
+          </div>
+          <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <div className="h-1 w-20 bg-red-600 mt-6 mx-auto"></div>
+          <p className="text-lg text-slate-600 mt-6 font-medium max-w-2xl mx-auto">
+            Answers for students from madrashas, schools, colleges and
+            universities — and for every girl who deserves to feel safe.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {faqData.map((faq, index) => (
+            <div
+              key={index}
+              className={`border rounded-sm transition-all duration-200 ${
+                openIndex === index
+                  ? "border-red-600 bg-red-50/40 shadow-sm"
+                  : "border-slate-200 bg-white hover:border-slate-300"
+              }`}
+            >
+              <button
+                onClick={() => toggle(index)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
+              >
+                <span
+                  className={`font-bold text-base ${
+                    openIndex === index ? "text-red-700" : "text-slate-800"
+                  }`}
+                >
+                  {faq.question}
+                </span>
+                <ChevronDown
+                  className={`w-5 h-5 shrink-0 transition-transform duration-200 ${
+                    openIndex === index
+                      ? "rotate-180 text-red-600"
+                      : "text-slate-400"
+                  }`}
+                />
+              </button>
+              {openIndex === index && (
+                <div className="px-6 pb-5 -mt-1">
+                  <p className="text-slate-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
