@@ -29,11 +29,13 @@ export default function Header() {
               className="rounded-sm"
             />
             <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-tight text-slate-900 leading-none">
-                {t.siteNameBn}
-              </span>
-              <span className="text-[11px] font-bold text-red-600 uppercase tracking-widest mt-0.5">
-                {t.siteTagline}
+              <div className="relative inline-block leading-none pb-1">
+                <span className="font-black text-[28px] tracking-tight text-slate-900 leading-none font-(family-name:--font-logo)">
+                  সাহস
+                </span>
+              </div>
+              <span className="text-[12px] font-bold text-slate-700 uppercase tracking-[0.15em] leading-none ml-0.5">
+                SAHOSH
               </span>
             </div>
           </Link>

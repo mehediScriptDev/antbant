@@ -21,11 +21,13 @@ export default function Footer() {
               className="rounded-sm"
             />
             <div className="flex flex-col">
-              <span className="font-black text-lg tracking-tight text-white leading-none">
-                {t.siteNameBn}
-              </span>
-              <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest mt-1">
-                {t.siteTagline}
+              <div className="relative inline-block leading-none pb-1">
+                <span className="font-black text-[24px] tracking-tight text-white leading-none font-(family-name:--font-logo)">
+                  সাহস
+                </span>
+              </div>
+              <span className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.15em] leading-none ml-0.5">
+                SAHOSH
               </span>
             </div>
           </Link>
