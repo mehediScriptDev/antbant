@@ -15,6 +15,13 @@ const notoBengali = Noto_Sans_Bengali({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
+import { Hind_Siliguri } from "next/font/google";
+const hindSiliguri = Hind_Siliguri({
+  variable: "--font-logo",
+  subsets: ["bengali"],
+  weight: ["700"],
+});
+
 export const metadata = {
   title: "সাহস — Sahosh | Ragging & Harassment Reporting Portal",
   description:
@@ -25,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="bn"
-      className={`${inter.variable} ${notoBengali.variable} h-full antialiased`}
+      className={`${inter.variable} ${notoBengali.variable} ${hindSiliguri.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300 selection:bg-primary-500 selection:text-white">
         <LanguageProvider>
